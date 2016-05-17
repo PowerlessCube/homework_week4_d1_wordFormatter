@@ -1,10 +1,15 @@
+require 'pry-byebug'
+
 class WordFormatter
 
-  def initialize( params )
-    @address = params[ '3 argyle house' ].to_s
-    @building = params[ 'code base' ].to_s
-    @postcode = params[ 'e13 zqf' ].to_s
-    @phone = params[ '0131 558030' ].to_i
+  def upcase_that_thing( string )
+    return string.upcase
+  end
+
+  def camel_case( string )
+    camel = string.split
+    result = camel.map { | word | word.capitalize }.join
+    return result
   end
 
 end

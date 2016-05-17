@@ -17,16 +17,13 @@ end
 get '/address' do
   content_type( :json )
 
-  word_formatter = WordFormatter.new(
-    params[ :address ].to_s,
-    params[ :building ].to_s,
-    params[ :postcode ].to_s,
-    params[ :phone ].to_s
-  )
-  result = {
-    address: word_formatter.address,
-  }
+  word_formatter = WordFormatter.new( )
+    postcode = word_formatter.upcase_that_thing( 'eh8 7ad' )
 
-  return result.to_json
+  return json( { :address => '3 argyle house', :building => 'codebase', :postcode => postcode } )
+end
 
+get '/camel/:input' do
+  word_formatter = WordFormatter.new(  )
+    return word_formatter.camel_case( params[ :input ] )
 end
